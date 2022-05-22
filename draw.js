@@ -2,28 +2,33 @@ var canvas = document.getElementById("myCanvas");
 //canvas.style="border:1px solid #000000;"
 var ctx = canvas.getContext("2d");
 
-const nRows = 30;
-const nCols = 50;
-const cellWidth = 20;
-const cellHeight = 20;
+const grid = {
+    nRows: 30,
+    nCols: 50,
+    cell: {
+        width: 20,
+        height: 20
+    }
+ };
+
 
 drawGrid();
 drawPolygon();
 
 function drawGrid() {
-    canvas.width = nCols * cellWidth;
-    canvas.height = nRows * cellHeight;
+    canvas.width = grid.nCols * grid.cell.width;
+    canvas.height = grid.nRows * grid.cell.height;
     ctx.beginPath();
     ctx.lineWidth = 1;
     ctx.strokeStyle = 'lightgray';
-    for (let iRows = 0; iRows <= nRows; iRows++) {
-        let y = iRows*cellHeight;
+    for (let iRows = 0; iRows <= grid.nRows; iRows++) {
+        let y = iRows*grid.cell.height;
         ctx.moveTo(0, y);
         ctx.lineTo(canvas.width, y);
         ctx.stroke();
     }
-    for (let iCols = 0; iCols <= nCols; iCols++) {
-        let x = iCols*cellWidth;
+    for (let iCols = 0; iCols <= grid.nCols; iCols++) {
+        let x = iCols*grid.cell.width;
         ctx.moveTo(x, 0);
         ctx.lineTo(x, canvas.height);
         ctx.stroke();
