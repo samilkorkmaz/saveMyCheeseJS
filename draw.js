@@ -48,7 +48,9 @@ function drawPolygon(x0, y0) {
     ctx.moveTo(x0, y0);
     ctx.lineTo(x0 + 220, y0 + 70);
     ctx.lineTo(x0 + 320, y0 + 170);
-    ctx.lineTo(x0 + 320, y0 + 270);
+    ctx.lineTo(x0 + 220, y0 + 270);
+    ctx.lineTo(x0 + 220, y0 + 170);
+    ctx.lineTo(x0 + 150, y0 + 270);
     ctx.lineTo(x0, y0);
     ctx.stroke();
 }
