@@ -11,9 +11,15 @@ const grid = {
     }
  };
 
-
+canvas.addEventListener("mousemove", updateDrawing);
 drawGrid();
-drawPolygon();
+drawPolygon(0,0);
+
+function updateDrawing(e) {
+    drawGrid();
+    var rect = canvas.getBoundingClientRect();
+    drawPolygon(e.clientX - rect.left, e.clientY - rect.top);
+}
 
 function drawGrid() {
     canvas.width = grid.nCols * grid.cell.width;
@@ -35,14 +41,14 @@ function drawGrid() {
     }
 }
 
-function drawPolygon() {
+function drawPolygon(x0, y0) {
     ctx.beginPath();
     ctx.lineWidth = 5;
     ctx.strokeStyle = 'blue';
-    ctx.moveTo(100, 50);
-    ctx.lineTo(220, 70);
-    ctx.lineTo(320, 170);
-    ctx.lineTo(320, 270);
-    ctx.lineTo(100, 50);
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x0 + 220, y0 + 70);
+    ctx.lineTo(x0 + 320, y0 + 170);
+    ctx.lineTo(x0 + 320, y0 + 270);
+    ctx.lineTo(x0, y0);
     ctx.stroke();
 }
